@@ -1,0 +1,120 @@
+<h1 align="center" style="color:red;"><b>Registration form</b></h1>
+<title>Reg</title>
+<script type="text/javascript">
+	function formvalidation()
+        	{   
+        	        var fname=document.forms["myForm"]["fname"].values;
+        	        var lname=document.forms["myForm"]["lname"].values;
+        	        var email=document.forms["myForm"]["email"].values;
+        	        var password=document.forms["myForm"]["pword"].values;
+					var repass=document.forms["myForm"]["repass"].values;
+                	var phno=document.forms["myForm"]["phno"].values;
+            
+
+        	        if(fname==null || fname=="")
+        	        {
+        	            alert("first name can't be blank");    
+						return;  
+        	        }
+        	        if(lname==null || lname==" ")
+        	        {
+        	            alert("last name can't be blank");
+						return;
+        	        }
+        	        if(email==null || email=="")
+        	        {
+        	            alert("email can't be blank");
+						return;
+        	        }
+        	        if(email.length>0)
+        	        {
+        	         	let eflag=false;
+            		    	for(i=0;i<email.length;i++)
+            		    	{
+								if(email.charAt(i)=="@") 
+								{ 
+					 				eflag=true;
+									break;
+								}
+							}
+							if(!(eflag)) 
+							{ 
+						    	alert("Please enter a valid Email ID"); 
+								return;			
+							}
+        	        }
+        	        if(password.length<8)
+        	        {
+        	            alert("password must be at least 8 characters long.");
+						return;
+        	        }
+					if(repass!=password)
+					{
+						alert("password not matched.");
+						return;
+					}
+        	        flag=false;
+        	        for(i=0;i<myForm.gender.length;i++)
+        	        {
+        	        	if(myForm.gender[i].checked)
+						{
+							flag=true;
+						}
+        	        }
+        	        if(!(flag))
+        	        {
+        	        	alert("Please select gender");
+						return;
+					}
+        	        if(phno.length<=9)
+        	        {
+        	            	alert("Enter valid phno");
+							return;
+        	        }    
+                	alert("logged in successfully.");                	
+            }
+</script>
+<form name="myForm">
+<table bgcolor="lavender" align="center" cellpadding="10" cellspacing="5">
+	<tr>
+		<td><label for="firstname"  style="font-size:20px;">Firstname:</label></td>
+		<td><input type="text" id="fname" name="fname"></td>
+	</tr>
+	<tr>
+		<td><label for="lastname"  style="font-size:20px;">Lastname:</label></td>
+		<td><input type="text" id="lname" name="lname"></td>
+	</tr>
+	<tr>
+		<td><label for="email"  style="font-size:20px;">Email:</label></td>
+		<td><input type="text" id="email" name="email"></td>
+	</tr>
+	<tr>
+		<td><label for="pword"  style="font-size:20px;">Password:</label></td>
+		<td><input type="password"  name="pword" id="pword"></td>
+	</tr>
+	<tr>
+		<td><label for="repass"  style="font-size:20px;">Re-Enter Password:</label></td>
+		<td><input type="password"  name="repass" id="repass"></td>
+	</tr>
+	<tr>
+		<td><label for="gender"  style="font-size:20px;">Gender:</label></td>
+		<td><input type="radio" id="gender" name="gender" value="male">
+		<label for="male"  style="font-size:20px;">male</label>
+		<input type="radio" id="gender" name="gender" value="female">
+		<label for="female"  style="font-size:20px;">female</label>
+		<input type="radio" id="gender" name="gender" value="others">
+		<label for="others"  style="font-size:20px;">others</label></td>
+	</tr>
+	<tr>
+		<td><label for="pno"  style="font-size:20px;" >Ph No:</label></td>
+		<td><input type="tel" id="phone" name="phno" placeholder="+91"></td>
+	</tr>
+	<tr>
+		<td><label for="dob"  style="font-size:20px;">DOB:</label></td>
+		<td><input type="date" id="dateofbirth" name="dob"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><button type="submit" value="submit" onclick="formvalidation()">Submit</button></td>
+	</tr>
+</table>
+</form>
